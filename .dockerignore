@@ -1,0 +1,10 @@
+.DS_Store
+*.env
+.git
+.github
+.gitignore
+__pycache__
+*.sh
+*.tmp
+tmp
+.venv

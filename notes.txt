@@ -1,0 +1,31 @@
+# Notes
+
+Use `--native-tls` to bypass MITM security 
+
+## `uv` style
+```
+# start project
+uv init .
+
+# add package
+uv add quart
+
+# after manually changing pyproject.toml
+uv lock
+```
+
+
+## `pip` style
+```
+# start project
+uv venv
+
+# activate
+source .venv/bin/activate
+
+# add a package
+uv --native-tls pip install quart
+
+# list installed packages
+uv pip freeze
+```
