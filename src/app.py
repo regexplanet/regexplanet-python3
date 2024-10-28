@@ -23,8 +23,14 @@ def add_if_exists(obj, key, value):
 def handle_jsonp(data):
     str_data = json.dumps(data)
     callback = request.args.get("callback")
-    if not callback:
-        return str_data, 200, { "Content-Type": "application/json" }
+    if callback is None:
+        return str_data, 200, {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST",
+            "Access-Control-Allow-Headers": "Content-Type",
+            "Access-Control-Max-Age": "604800",
+        }
 
     return f"{callback}({str_data})", 200, { "Content-Type": "application/javascript" }
 
