@@ -21,6 +21,12 @@ RUN uv sync --locked --no-cache --no-dev --no-install-project
 # distroless is current 3.11, but the mismatch doesn't seem to matter
 FROM gcr.io/distroless/python3-debian12
 
+ARG COMMIT="(not set)"
+ARG LASTMOD="(not set)"
+ENV COMMIT=$COMMIT
+ENV LASTMOD=$LASTMOD
+ENV PYTHONUNBUFFERED=1
+
 USER nonroot
 
 WORKDIR /app/dist
