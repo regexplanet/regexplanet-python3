@@ -25,6 +25,7 @@ USER nonroot
 
 WORKDIR /app/dist
 COPY --chown=nonroot:nonroot ./src /app/dist
+COPY --chown=nonroot:nonroot ./static /app/dist/static
 COPY --chown=nonroot:nonroot --from=build /app/.venv/lib/python3.12/site-packages /app/dist
 
 # in slim-bookworm: "/usr/local/bin/python3.12"

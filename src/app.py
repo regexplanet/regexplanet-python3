@@ -12,6 +12,7 @@ import re
 import sysconfig
 import sys
 from quart import Quart, request
+from quart.helpers import send_file
 from markupsafe import escape
 
 app = Quart(__name__)
@@ -37,6 +38,18 @@ def handle_jsonp(data):
 @app.route("/")
 async def root():
     return f"Running Python {platform.python_version()}", 200, { "Content-Type": "text/plain; charset=utf8;" }
+
+@app.route("/favicon.ico")
+async def faviconIco():
+    return await send_file("static/favicon.ico")
+
+@app.route("/favicon.svg")
+async def faviconSvg():
+    return await send_file("static/favicon.svg")
+
+@app.route("/robots.txt")
+async def robotsTxt():
+    return await send_file("static/robots.txt")
 
 @app.route("/status.json")
 async def status_json():
